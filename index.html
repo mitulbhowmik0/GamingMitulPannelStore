@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gaming Mitul Pannel Store</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS VARIABLES & RESET */
+        :root {
+            --bg-color: #05050a;
+            --surface-color: rgba(20, 20, 35, 0.7);
+            --primary-glow: #00f3ff;
+            --secondary-glow: #ff00ff;
+            --success-glow: #00ff66;
+            --danger-glow: #ff003c;
+            --text-main: #ffffff;
+            --text-muted: #a0a0b5;
+            --glass-border: rgba(0, 243, 255, 0.3);
+            --glass-bg: rgba(15, 15, 25, 0.6);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Rajdhani', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 243, 255, 0.05), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 255, 0.05), transparent 25%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, h5, h6, .orbitron {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+
+        /* CUSTOM SCROLLBAR */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--bg-color); }
+        ::-webkit-scrollbar-thumb { background: var(--primary-glow); border-radius: 10px; }
+
+        /* UTILITIES & ANIMATIONS */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .neon-text { text-shadow: 0 0 10px var(--primary-glow); }
+        .neon-text-pink { text-shadow: 0 0 10px var(--secondary-glow); color: var(--secondary-glow); }
+        
+        .btn-neon {
+            background: transparent;
+            color: var(--primary-glow);
+            border: 1px solid var(--primary-glow);
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2) inset, 0 0 10px rgba(0, 243, 255, 0.2);
+            text-align: center;
+        }
+        .btn-neon:hover {
+            background: var(--primary-glow);
+            color: #000;
+            box-shadow: 0 0 20px var(--primary-glow), 0 0 40px var(--primary-glow);
+        }
+
+        .btn-neon-pink {
+            border-color: var(--secondary-glow);
+            color: var(--secondary-glow);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.2) inset, 0 0 10px rgba(255, 0, 255, 0.2);
+            background: transparent;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+        .btn-neon-pink:hover {
+            background: var(--secondary-glow);
+            color: #000;
+            box-shadow: 0 0 20px var(--secondary-glow);
+        }
+
+        .btn-neon-danger {
+            border-color: var(--danger-glow);
+            color: var(--danger-glow);
+            box-shadow: 0 0 10px rgba(255, 0, 50, 0.2) inset, 0 0 10px rgba(255, 0, 50, 0.2);
+        }
+        .btn-neon-danger:hover {
+            background: var(--danger-glow);
+            color: #fff;
+            box-shadow: 0 0 20px var(--danger-glow);
+        }
+
+        .input-cyber {
+            width: 100%;
+            background: rgba(0,0,0,0.5);
+            border: 1px solid var(--glass-border);
+            color: #fff;
+            padding: 12px 15px;
+            border-radius: 8px;
+            outline: none;
+            font-size: 16px;
+            transition: all 0.3s;
+        }
+        .input-cyber:focus {
+            border-color: var(--secondary-glow);
+            box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+        }
+
+        .hidden { display: none !important; }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.3); text-shadow: 0 0 10px rgba(0, 243, 255, 0.3); }
+            50% { box-shadow: 0 0 25px rgba(0, 243, 255, 0.6); text-shadow: 0 0 25px rgba(0, 243, 255, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(0, 243, 255, 0.3); text-shadow: 0 0 10px rgba(0, 243, 255, 0.3); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        /* SPLASH SCREEN */
+        #splash-screen {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.5s ease;
+        }
+        .loader-logo {
+            font-size: 2.5rem;
+            color: #fff;
+            text-align: center;
+            animation: pulse-glow 1.5s infinite;
+        }
+        .loader-bar {
+            width: 200px; height: 4px; background: #333; margin-top: 20px; border-radius: 2px; overflow: hidden;
+        }
+        .loader-fill {
+            height: 100%; background: var(--primary-glow); width: 0%;
+            animation: loading 2s ease forwards;
+        }
+        @keyframes loading { to { width: 100%; } }
+
+        /* APP LAYOUT */
+        #app-container {
+            padding-bottom: 80px; /* Space for bottom nav */
+            min-height: 100vh;
+        }
+
+        /* HEADER */
+        header {
+            position: sticky; top: 0; z-index: 100;
+            padding: 15px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom-left-radius: 0; border-bottom-right-radius: 0;
+            border-top: none; border-left: none; border-right: none;
+        }
+        .logo { font-size: 1.3rem; font-weight: 900; color: #fff; }
+        .header-icons i { font-size: 1.3rem; margin-left: 15px; cursor: pointer; color: var(--primary-glow); }
+        
+        /* SECTIONS */
+        section { padding: 20px; animation: fadeIn 0.5s ease; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .section-title { font-size: 1.5rem; margin-bottom: 15px; border-left: 4px solid var(--primary-glow); padding-left: 10px; }
+
+        /* SLIDER */
+        .slider-container {
+            width: 100%; height: 180px; border-radius: 12px; overflow: hidden; position: relative; margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+        }
+        .slide {
+            position: absolute; width: 100%; height: 100%; opacity: 0; transition: opacity 0.5s ease;
+            background-size: cover; background-position: center;
+        }
+        .slide.active { opacity: 1; }
+        
+        /* LIVE STATS */
+        .stats-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 20px;
+        }
+        .stat-card {
+            text-align: center; padding: 15px 5px;
+        }
+        .stat-value { font-family: 'Orbitron'; font-size: 1.2rem; color: var(--primary-glow); font-weight: bold; }
+        .stat-label { font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; }
+
+        /* PRODUCT GRID */
+        .product-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px;
+        }
+        .product-card {
+            display: flex; flex-direction: column; overflow: hidden; position: relative;
+            transition: transform 0.3s;
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 243, 255, 0.3); }
+        .product-img { width: 100%; height: 120px; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
+        .product-info { padding: 10px; }
+        .product-title { font-size: 1rem; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .product-price { color: var(--success-glow); font-family: 'Orbitron'; font-size: 0.9rem; margin: 5px 0; }
+        .trending-badge { position: absolute; top: 5px; right: 5px; background: var(--secondary-glow); color: #fff; font-size: 0.7rem; padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+
+        /* URL INPUT SYSTEM */
+        .url-adder-box { margin-bottom: 20px; padding: 15px; }
+        .url-adder-box h3 { margin-bottom: 10px; font-size: 1.1rem; }
+        .url-form { display: flex; gap: 10px; }
+
+        /* VIDEO & GALLERY */
+        .video-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 1px solid var(--secondary-glow); margin-bottom: 15px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        
+        .gallery-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+        .gallery-img { width: 100%; height: 100px; object-fit: cover; border-radius: 8px; border: 1px solid var(--glass-border); }
+
+        /* PAYMENT SYSTEM */
+        .qr-box { text-align: center; margin: 20px 0; }
+        .qr-box img { width: 200px; height: 200px; border: 2px solid var(--primary-glow); border-radius: 10px; padding: 10px; background: #fff; }
+        .upi-id { font-family: 'Orbitron'; color: var(--success-glow); margin-top: 10px; letter-spacing: 1px; }
+
+        /* BOTTOM NAV */
+        #bottom-nav {
+            position: fixed; bottom: 0; left: 0; width: 100%;
+            background: rgba(10, 10, 15, 0.9); backdrop-filter: blur(10px);
+            border-top: 1px solid var(--glass-border);
+            display: flex; justify-content: space-around; padding: 15px 0; z-index: 100;
+        }
+        .nav-item {
+            color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.8rem; cursor: pointer; transition: color 0.3s;
+        }
+        .nav-item i { font-size: 1.3rem; margin-bottom: 3px; }
+        .nav-item.active { color: var(--primary-glow); text-shadow: 0 0 10px var(--primary-glow); }
+
+        /* FLOATING BUTTONS */
+        .floating-social { position: fixed; bottom: 80px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 90; }
+        .float-btn {
+            width: 45px; height: 45px; border-radius: 50%; display: flex; justify-content: center; align-items: center;
+            color: #fff; font-size: 1.5rem; text-decoration: none; box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            animation: float 3s ease-in-out infinite;
+        }
+        .btn-wa { background: #25D366; }
+        .btn-tg { background: #0088cc; animation-delay: 1.5s; }
+
+        /* FOOTER */
+        footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px; }
+        .mitul-brand { color: var(--primary-glow); font-family: 'Orbitron'; font-weight: bold; }
+
+        /* MODALS (GLOBAL & AUTH) */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); backdrop-filter: blur(8px);
+            z-index: 1000; display: flex; justify-content: center; align-items: center;
+            opacity: 1; transition: opacity 0.3s ease;
+        }
+        .modal-overlay.hidden { opacity: 0; pointer-events: none; display: flex !important; }
+        
+        .modal-content {
+            width: 90%; max-width: 400px; padding: 30px 25px; position: relative;
+            transform: scale(1); transition: transform 0.3s ease;
+        }
+        .modal-overlay.hidden .modal-content { transform: scale(0.9); }
+        
+        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; transition: color 0.3s; }
+        .close-modal:hover { color: var(--danger-glow); text-shadow: 0 0 10px var(--danger-glow); }
+
+        /* AUTH FORMS */
+        .auth-logo { text-align: center; font-size: 2.2rem; margin-bottom: 25px; }
+        .auth-form { display: flex; flex-direction: column; gap: 15px; }
+        .auth-switch { text-align: center; margin-top: 20px; color: var(--text-muted); cursor: pointer; font-size: 0.9rem;}
+        .auth-switch span { color: var(--secondary-glow); text-decoration: underline; font-weight: bold;}
+    </style>
+</head>
+<body>
+
+    <div id="splash-screen">
+        <div class="loader-logo orbitron">
+            <span class="neon-text">Gaming Mitul</span><br>
+            <span class="neon-text-pink" style="font-size: 1.8rem;">Pannel Store</span>
+        </div>
+        <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+
+    <div id="app-container" class="hidden">
+        
+        <header class="glass-panel" id="main-header">
+            <div class="logo neon-text">GAMING MITUL <span style="color: var(--secondary-glow)">PANNEL</span></div>
+            <div class="header-icons">
+                <i class="fas fa-search" onclick="navTo('store', document.querySelectorAll('.nav-item')[1]); document.getElementById('store-search').focus();"></i>
+            </div>
+        </header>
+
+        <section id="sec-home">
+            <div class="slider-container" id="main-slider">
+                </div>
+
+            <div class="glass-panel url-adder-box">
+                <h3 class="orbitron neon-text-pink"><i class="fas fa-link"></i> Custom URL Render</h3>
+                <p style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px;">Paste ANY image URL to render it across the site instantly.</p>
+                <div class="url-form">
+                    <input type="url" id="custom-img-url" class="input-cyber" placeholder="https://example.com/img.png">
+                    <button class="btn-neon" onclick="addCustomImage()"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="glass-panel stat-card">
+                    <div class="stat-value" id="stat-online">1,204</div>
+                    <div class="stat-label">Online Users</div>
+                </div>
+                <div class="glass-panel stat-card">
+                    <div class="stat-value" id="stat-orders">8,492</div>
+                    <div class="stat-label">Orders Done</div>
+                </div>
+                <div class="glass-panel stat-card">
+                    <div class="stat-value" id="stat-downloads">45.2K</div>
+                    <div class="stat-label">Downloads</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">Trending Loot</h2>
+            <div class="product-grid" id="trending-products">
+                </div>
+
+            <h2 class="section-title" style="margin-top: 25px;">Premium Content</h2>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Gaming Mitul Pannel Store" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 25px;">Downloads</h2>
+            <div class="glass-panel" style="padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <div>
+                    <h4 style="font-size: 1.1rem; color: var(--text-main);">Mitul VIP Injector v2.1</h4>
+                    <p style="font-size: 0.8rem; color: var(--text-muted);">Size: 45MB | Secure</p>
+                </div>
+                <button class="btn-neon-pink" id="btn-download" onclick="downloadItem()"><i class="fas fa-lock"></i> GET</button>
+            </div>
+        </section>
+
+        <section id="sec-store" class="hidden">
+            <h2 class="section-title">Full Arsenal</h2>
+            <div class="input-cyber" style="margin-bottom: 15px; display: flex; align-items: center;">
+                <i class="fas fa-search" style="margin-right: 10px; color: var(--primary-glow);"></i>
+                <input type="text" id="store-search" placeholder="Search accounts, skins..." style="background:transparent; border:none; color:#fff; outline:none; width:100%;" onkeyup="filterProducts()">
+            </div>
+            <div class="product-grid" id="all-products">
+                </div>
+        </section>
+
+        <section id="sec-gallery" class="hidden">
+            <h2 class="section-title">Gaming Gallery</h2>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">Paste URLs on Home tab to see them appear here automatically.</p>
+            <div class="gallery-grid" id="main-gallery">
+                </div>
+        </section>
+
+        <section id="sec-payment" class="hidden">
+            <div class="glass-panel" style="padding: 20px;">
+                <h2 class="orbitron neon-text" style="text-align: center; margin-bottom: 20px;">Secure Checkout</h2>
+                
+                <div class="qr-box">
+                    <p style="margin-bottom: 10px; color: var(--text-muted);">Scan to Pay with any UPI App</p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=gamingmitul@ybl&pn=GamingMitulPannel" alt="UPI QR">
+                    <div class="upi-id">gamingmitul@ybl</div>
+                </div>
+
+                <form id="payment-form" style="margin-top: 20px; display: flex; flex-direction: column; gap: 15px;" onsubmit="submitPayment(event)">
+                    <div>
+                        <label style="font-size: 0.9rem; color: var(--primary-glow);">Amount (₹)</label>
+                        <input type="text" id="pay-amount" class="input-cyber" value="₹ 0" readonly>
+                    </div>
+                    <div>
+                        <label style="font-size: 0.9rem; color: var(--primary-glow);">12-Digit UTR / Transaction ID</label>
+                        <input type="text" id="pay-utr" class="input-cyber" placeholder="e.g. 312345678912" required pattern="\d{12}">
+                    </div>
+                    <div>
+                        <label style="font-size: 0.9rem; color: var(--primary-glow);">Upload Screenshot</label>
+                        <input type="file" id="pay-screenshot" class="input-cyber" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn-neon" style="width: 100%; margin-top: 10px;">Submit Verification</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="sec-profile" class="hidden">
+            <div class="glass-panel" style="padding: 20px; text-align: center;">
+                <div style="width: 80px; height: 80px; border-radius: 50%; border: 2px solid var(--primary-glow); margin: 0 auto 10px auto; overflow: hidden; background: #000;">
+                    <img src="https://i.pravatar.cc/150?img=11" style="width: 100%; height: 100%; object-fit: cover;" id="profile-img">
+                </div>
+                <h3 class="orbitron neon-text" id="user-display-name">Player</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;" id="user-email-display">Loading...</p>
+                
+                <div style="display: flex; justify-content: center; gap: 15px; margin-top: 15px; margin-bottom: 15px;">
+                    <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 8px; flex: 1;">
+                        <div style="font-size: 1.2rem; color: var(--primary-glow); font-weight: bold;" id="profile-orders">0</div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted);">ORDERS</div>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.4); padding: 10px; border-radius: 8px; flex: 1;">
+                        <div style="font-size: 1.2rem; color: var(--success-glow); font-weight: bold;" id="profile-status">Free</div>
+                        <div style="font-size: 0.7rem; color: var(--text-muted);">STATUS</div>
+                    </div>
+                </div>
+
+                <button class="btn-neon-danger" style="width: 100%; padding: 8px;" onclick="logoutUser()">Log Out</button>
+            </div>
+
+            <h2 class="section-title" style="margin-top: 25px;">Recent Activity</h2>
+            <div id="order-history-list">
+                <div class="glass-panel" style="padding: 15px; margin-bottom: 10px; border-left: 4px solid var(--text-muted); text-align: center; color: var(--text-muted);">
+                    No recent purchases.
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Powered By <span class="mitul-brand">Gaming Mitul YT</span></p>
+            <p style="font-size: 0.7rem; margin-top: 5px;">© 2026 Gaming Mitul Pannel Store.</p>
+        </footer>
+
+    </div> <nav id="bottom-nav">
+        <div class="nav-item active" onclick="navTo('home', this)"><i class="fas fa-home"></i>Home</div>
+        <div class="nav-item" onclick="navTo('store', this)"><i class="fas fa-store"></i>Store</div>
+        <div class="nav-item" onclick="navTo('gallery', this)"><i class="fas fa-image"></i>Gallery</div>
+        <div class="nav-item" onclick="navTo('profile', this)"><i class="fas fa-user"></i>Profile</div>
+    </nav>
+
+    <div class="floating-social" id="float-social">
+        <a href="https://wa.me/" target="_blank" class="float-btn btn-wa"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://t.me/" target="_blank" class="float-btn btn-tg"><i class="fab fa-telegram-plane"></i></a>
+    </div>
+
+    <div id="auth-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content" style="border-color: var(--secondary-glow); box-shadow: 0 0 30px rgba(255, 0, 255, 0.2);">
+            <i class="fas fa-times close-modal" onclick="closeAuthModal()"></i>
+            <div class="auth-logo orbitron neon-text-pink" id="auth-title">LOGIN</div>
+            <p style="text-align: center; color: var(--text-muted); margin-top: -20px; margin-bottom: 20px; font-size: 0.85rem;">Login required to access premium features.</p>
+            
+            <form id="auth-form" class="auth-form" onsubmit="handleAuthSubmit(event)">
+                <input type="text" id="auth-username" class="input-cyber hidden" placeholder="Gaming Username">
+                <input type="email" id="auth-email" class="input-cyber" placeholder="Cyber Email" required>
+                <input type="password" id="auth-pass" class="input-cyber" placeholder="Password" required>
+                <button type="submit" class="btn-neon" style="width: 100%; border-color: var(--secondary-glow); color: var(--secondary-glow);" id="auth-btn">Initialize Connection</button>
+            </form>
+            <div class="auth-switch" onclick="toggleAuthMode()">New Player? <span>Register Here</span></div>
+        </div>
+    </div>
+
+    <div id="global-modal" class="modal-overlay hidden">
+        <div class="glass-panel modal-content">
+            <i class="fas fa-times close-modal" onclick="closeGlobalModal()"></i>
+            <h3 class="orbitron neon-text" id="modal-title" style="margin-bottom: 15px;">Notification</h3>
+            <p id="modal-body" style="margin-bottom: 20px; color: #ddd; font-size: 1.1rem;"></p>
+            <button class="btn-neon" style="width: 100%;" onclick="closeGlobalModal()">ACKNOWLEDGE</button>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut, updateProfile } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+
+        // Provided Firebase Configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyCwGPYu7QDPf2yLLkuzvKJW73yNyqLui98",
+            authDomain: "gaming-mitul-store.firebaseapp.com",
+            projectId: "gaming-mitul-store",
+            storageBucket: "gaming-mitul-store.firebasestorage.app",
+            messagingSenderId: "941763401463",
+            appId: "1:941763401463:web:6d08a7353bac6c9827e5f2"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        // --- APP STATE & MOCK DATA ---
+        let currentUser = null;
+        let isLoginMode = true;
+        let activeProductForPayment = null;
+        let isDownloadUnlocked = false;
+        let userOrders = 0;
+        
+        let dynamicImages = [
+            "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop",
+            "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop"
+        ];
+
+        let products = [
+            { id: 1, title: "BGMI Max Mythic Acc", price: 4500, img: dynamicImages[0], trending: true },
+            { id: 2, title: "Free Fire V-Badge", price: 2100, img: dynamicImages[1], trending: true },
+            { id: 3, title: "Valorant Radiant Smurf", price: 1500, img: dynamicImages[2], trending: false },
+            { id: 4, title: "CoD Mobile CP Pack", price: 800, img: "https://images.unsplash.com/photo-1552820728-8b83bb6b773f?q=80&w=600&auto=format&fit=crop", trending: false }
+        ];
+
+        // --- UI INITIALIZATION ---
+        window.onload = () => {
+            renderAllDynamicContent();
+            
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('splash-screen').classList.add('hidden');
+                    document.getElementById('app-container').classList.remove('hidden');
+                    startCounters();
+                }, 500);
+            }, 2000);
+
+            // Auth State Listener
+            onAuthStateChanged(auth, (user) => {
+                currentUser = user;
+                if (user) {
+                    // Update Profile Data
+                    document.getElementById('user-email-display').innerText = user.email;
+                    document.getElementById('user-display-name').innerText = user.displayName || user.email.split('@')[0];
+                    closeAuthModal();
+                } else {
+                    // Clear Profile Data
+                    document.getElementById('user-email-display').innerText = "Loading...";
+                    document.getElementById('user-display-name').innerText = "Player";
+                    isDownloadUnlocked = false; // Reset purchase state on logout
+                    updateDownloadButtonUI();
+                }
+            });
+        };
+
+        // --- NAVIGATION LOGIC ---
+        window.navTo = (targetId, element) => {
+            // AUTH GATE FOR PROFILE
+            if (targetId === 'profile' && !currentUser) {
+                showAuthModal();
+                return;
+            }
+
+            // Hide all sections
+            ['home', 'store', 'gallery', 'payment', 'profile'].forEach(id => {
+                const el = document.getElementById(`sec-${id}`);
+                if(el) el.classList.add('hidden');
+            });
+            
+            // Show target
+            document.getElementById(`sec-${targetId}`).classList.remove('hidden');
+            
+            // Update active nav styling
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            if(element) element.classList.add('active');
+            else {
+                // Find matching nav item if not explicitly passed
+                document.querySelectorAll('.nav-item').forEach(el => {
+                    if(el.innerHTML.toLowerCase().includes(targetId)) el.classList.add('active');
+                });
+            }
+        };
+
+        // --- AUTHENTICATION SYSTEM LOGIC ---
+        window.showAuthModal = () => {
+            document.getElementById('auth-modal').classList.remove('hidden');
+        };
+
+        window.closeAuthModal = () => {
+            document.getElementById('auth-modal').classList.add('hidden');
+        };
+
+        window.toggleAuthMode = () => {
+            isLoginMode = !isLoginMode;
+            const title = document.getElementById('auth-title');
+            const btn = document.getElementById('auth-btn');
+            const switchTxt = document.querySelector('.auth-switch span');
+            const userInp = document.getElementById('auth-username');
+            
+            if (isLoginMode) {
+                title.innerText = "LOGIN";
+                btn.innerText = "Initialize Connection";
+                switchTxt.innerText = "Register Here";
+                userInp.classList.add('hidden');
+                userInp.required = false;
+            } else {
+                title.innerText = "REGISTER";
+                btn.innerText = "Create Profile";
+                switchTxt.innerText = "Login Instead";
+                userInp.classList.remove('hidden');
+                userInp.required = true;
+            }
+        };
+
+        window.handleAuthSubmit = async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('auth-email').value;
+            const pass = document.getElementById('auth-pass').value;
+            const btn = document.getElementById('auth-btn');
+            const ogText = btn.innerText;
+            
+            btn.innerText = "Processing...";
+            btn.disabled = true;
+
+            try {
+                if (isLoginMode) {
+                    await signInWithEmailAndPassword(auth, email, pass);
+                    showPopup("Access Granted", "Welcome back to Gaming Mitul Pannel Store.");
+                } else {
+                    const username = document.getElementById('auth-username').value;
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, pass);
+                    // Update display name
+                    await updateProfile(userCredential.user, { displayName: username });
+                    // Force refresh user to reflect display name locally immediately
+                    document.getElementById('user-display-name').innerText = username;
+                    showPopup("Registration Successful", "Your profile has been created. Auto-login successful.");
+                }
+                e.target.reset();
+                closeAuthModal();
+            } catch (error) {
+                let msg = error.message;
+                if(error.code === 'auth/email-already-in-use') msg = "This email is already registered.";
+                if(error.code === 'auth/wrong-password' || error.code === 'auth/invalid-credential') msg = "Invalid email or password.";
+                showPopup("Authentication Error", msg);
+            } finally {
+                btn.innerText = ogText;
+                btn.disabled = false;
+            }
+        };
+
+        window.logoutUser = () => {
+            signOut(auth).then(() => {
+                showPopup("Disconnected", "You have been logged out securely.");
+                navTo('home', document.querySelectorAll('.nav-item')[0]);
+            });
+        };
+
+        // --- PURCHASE & DOWNLOAD LOGIC (AUTH GATED) ---
+        window.buyProduct = (id) => {
+            if (!currentUser) {
+                showAuthModal();
+                return;
+            }
+
+            const prod = products.find(p => p.id === id);
+            if(prod) {
+                activeProductForPayment = prod;
+                document.getElementById('pay-amount').value = `₹ ${prod.price}`;
+                navTo('payment', null); // Hide tabs visually on store
+            }
+        };
+
+        window.submitPayment = (e) => {
+            e.preventDefault();
+            if (!currentUser) {
+                showAuthModal();
+                return;
+            }
+
+            const utr = document.getElementById('pay-utr').value;
+            const file = document.getElementById('pay-screenshot').files[0];
+            
+            if(utr.length === 12 && file) {
+                isDownloadUnlocked = true;
+                userOrders++;
+                updateDownloadButtonUI();
+                
+                // Update Profile Stats Mock
+                document.getElementById('profile-orders').innerText = userOrders;
+                document.getElementById('profile-status').innerText = "VIP";
+                document.getElementById('profile-status').style.color = "var(--secondary-glow)";
+                
+                // Add to mock history
+                const historyHtml = `
+                    <div class="glass-panel" style="padding: 15px; margin-bottom: 10px; border-left: 4px solid var(--success-glow);">
+                        <div style="display: flex; justify-content: space-between;">
+                            <strong>${activeProductForPayment.title}</strong>
+                            <span style="color: var(--success-glow);">Verified</span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">Txn: ${utr}</div>
+                    </div>`;
+                
+                let histContainer = document.getElementById('order-history-list');
+                if(userOrders === 1) histContainer.innerHTML = ''; // clear "No recent purchases"
+                histContainer.innerHTML = historyHtml + histContainer.innerHTML;
+
+                showPopup("Payment Verified!", `Purchase successful for ${activeProductForPayment.title}. VIP Downloads are now unlocked!`);
+                e.target.reset();
+                navTo('profile', document.querySelectorAll('.nav-item')[3]);
+            } else {
+                showPopup("Error", "Valid 12-digit UTR and Screenshot required.");
+            }
+        };
+
+        window.downloadItem = () => {
+            if (!currentUser) {
+                showAuthModal();
+                return;
+            }
+            if (!isDownloadUnlocked) {
+                showPopup("Content Locked", "Please complete a purchase from the store to verify your account and unlock premium downloads.");
+                return;
+            }
+            showPopup("Download Started", "Mitul_VIP_Injector_v2.1.apk is downloading to your device...");
+        };
+
+        function updateDownloadButtonUI() {
+            const btn = document.getElementById('btn-download');
+            if(isDownloadUnlocked) {
+                btn.innerHTML = '<i class="fas fa-download"></i> DOWNLOAD';
+                btn.className = 'btn-neon';
+                btn.style.boxShadow = '0 0 15px var(--success-glow)';
+                btn.style.borderColor = 'var(--success-glow)';
+                btn.style.color = 'var(--success-glow)';
+            } else {
+                btn.innerHTML = '<i class="fas fa-lock"></i> GET';
+                btn.className = 'btn-neon-pink';
+                btn.style = ''; // reset inline
+            }
+        }
+
+        // --- DYNAMIC CONTENT RENDERING (IMAGE LINK SYSTEM) ---
+        window.addCustomImage = () => {
+            const urlInput = document.getElementById('custom-img-url');
+            const url = urlInput.value.trim();
+            if(url) {
+                dynamicImages.unshift(url);
+                products.unshift({
+                    id: Date.now(), title: "Custom Inserted Item", price: 999, img: url, trending: true
+                });
+                urlInput.value = '';
+                renderAllDynamicContent();
+                showPopup("Success", "Image URL rendered into Gallery, Slider, and Products.");
+            }
+        };
+
+        function renderAllDynamicContent() {
+            renderSlider();
+            renderProducts();
+            renderGallery();
+        }
+
+        function renderSlider() {
+            const container = document.getElementById('main-slider');
+            container.innerHTML = '';
+            const slides = dynamicImages.slice(0,3);
+            slides.forEach((url, index) => {
+                const div = document.createElement('div');
+                div.className = `slide ${index === 0 ? 'active' : ''}`;
+                div.style.backgroundImage = `url(${url})`;
+                container.appendChild(div);
+            });
+        }
+
+        function renderProducts() {
+            const trendingContainer = document.getElementById('trending-products');
+            const allContainer = document.getElementById('all-products');
+            trendingContainer.innerHTML = '';
+            allContainer.innerHTML = '';
+
+            products.forEach(p => {
+                const cardHtml = `
+                    <div class="glass-panel product-card">
+                        ${p.trending ? '<div class="trending-badge">HOT</div>' : ''}
+                        <img src="${p.img}" class="product-img" alt="${p.title}" onerror="this.src='https://via.placeholder.com/150/000000/00f3ff?text=IMAGE+ERROR'">
+                        <div class="product-info">
+                            <div class="product-title">${p.title}</div>
+                            <div class="product-price">₹ ${p.price}</div>
+                            <button class="btn-neon" style="width: 100%; padding: 5px; font-size: 0.8rem;" onclick="buyProduct(${p.id})">BUY NOW</button>
+                        </div>
+                    </div>
+                `;
+                if(p.trending) trendingContainer.innerHTML += cardHtml;
+                allContainer.innerHTML += cardHtml;
+            });
+        }
+
+        function renderGallery() {
+            const container = document.getElementById('main-gallery');
+            container.innerHTML = '';
+            dynamicImages.forEach(url => {
+                container.innerHTML += `<img src="${url}" class="gallery-img" onerror="this.style.display='none'">`;
+            });
+        }
+
+        window.filterProducts = () => {
+            const q = document.getElementById('store-search').value.toLowerCase();
+            const allCards = document.querySelectorAll('#all-products .product-card');
+            allCards.forEach(card => {
+                const title = card.querySelector('.product-title').innerText.toLowerCase();
+                card.style.display = title.includes(q) ? 'flex' : 'none';
+            });
+        };
+
+        // --- UTILS & ANIMATIONS ---
+        window.showPopup = (title, body = "") => {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-body').innerText = body;
+            document.getElementById('global-modal').classList.remove('hidden');
+        };
+
+        window.closeGlobalModal = () => {
+            document.getElementById('global-modal').classList.add('hidden');
+        };
+
+        // Auto Image Slider logic
+        setInterval(() => {
+            const slides = document.querySelectorAll('.slide');
+            if(slides.length < 2) return;
+            let activeIdx = 0;
+            slides.forEach((s, i) => { if(s.classList.contains('active')) activeIdx = i; });
+            slides[activeIdx].classList.remove('active');
+            let nextIdx = (activeIdx + 1) % slides.length;
+            slides[nextIdx].classList.add('active');
+        }, 3000);
+
+        // Live Counters Animation
+        function startCounters() {
+            setInterval(() => {
+                let onl = document.getElementById('stat-online');
+                let cur = parseInt(onl.innerText.replace(',',''));
+                cur += Math.floor(Math.random() * 5) - 2;
+                onl.innerText = cur.toLocaleString();
+            }, 5000);
+        }
+    </script>
+</body>
+</html>
