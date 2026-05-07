@@ -4,160 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Gaming Mitul Pannel Store - SYSTEM ADMIN</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
     <style>
-        /* CSS VARIABLES & RESET */
         :root {
-            --bg-color: #05050a;
-            --surface-color: rgba(20, 20, 35, 0.7);
-            --primary-glow: #00f3ff;
-            --secondary-glow: #ff00ff;
-            --success-glow: #00ff66;
-            --warning-glow: #ffb800;
-            --danger-glow: #ff003c;
-            --text-main: #ffffff;
-            --text-muted: #a0a0b5;
-            --glass-border: rgba(0, 243, 255, 0.3);
-            --glass-bg: rgba(15, 15, 25, 0.7);
+            --bg-color: #05050a; --surface-color: rgba(20, 20, 35, 0.7);
+            --primary-glow: #00f3ff; --secondary-glow: #ff00ff;
+            --success-glow: #00ff66; --warning-glow: #ffb800; --danger-glow: #ff003c;
+            --text-main: #ffffff; --text-muted: #a0a0b5;
+            --glass-border: rgba(0, 243, 255, 0.3); --glass-bg: rgba(15, 15, 25, 0.7);
         }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Rajdhani', sans-serif;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 10%, rgba(255, 0, 60, 0.05), transparent 30%),
-                radial-gradient(circle at 90% 90%, rgba(0, 243, 255, 0.05), transparent 30%);
-            background-attachment: fixed;
-        }
-
-        h1, h2, h3, h4, h5, h6, .orbitron {
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-        }
-
-        /* CUSTOM SCROLLBAR */
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: var(--bg-color); }
-        ::-webkit-scrollbar-thumb { background: var(--danger-glow); border-radius: 10px; }
-
-        /* UTILITIES & ANIMATIONS */
-        .glass-panel {
-            background: var(--glass-bg);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--glass-border);
-            border-radius: 12px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-        }
-
-        .neon-text { text-shadow: 0 0 10px var(--primary-glow); }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Rajdhani', sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background-color: var(--bg-color); color: var(--text-main); overflow-x: hidden; background-attachment: fixed; background-image: radial-gradient(circle at 10% 10%, rgba(255, 0, 60, 0.05), transparent 30%), radial-gradient(circle at 90% 90%, rgba(0, 243, 255, 0.05), transparent 30%); }
+        h1, h2, h3, h4, h5, h6, .orbitron { font-family: 'Orbitron', sans-serif; text-transform: uppercase; }
+        ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: var(--bg-color); } ::-webkit-scrollbar-thumb { background: var(--danger-glow); border-radius: 10px; }
+        .glass-panel { background: var(--glass-bg); backdrop-filter: blur(12px); border: 1px solid var(--glass-border); border-radius: 12px; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5); }
         .neon-text-danger { text-shadow: 0 0 10px var(--danger-glow); color: var(--danger-glow); }
-        
-        .btn-neon {
-            background: transparent;
-            color: var(--primary-glow);
-            border: 1px solid var(--primary-glow);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
-            box-shadow: 0 0 10px rgba(0, 243, 255, 0.2) inset;
-            text-align: center;
-        }
-        .btn-neon:hover {
-            background: var(--primary-glow); color: #000;
-            box-shadow: 0 0 20px var(--primary-glow);
-        }
-
-        .btn-neon-danger {
-            border-color: var(--danger-glow); color: var(--danger-glow);
-            box-shadow: 0 0 10px rgba(255, 0, 60, 0.2) inset;
-        }
-        .btn-neon-danger:hover {
-            background: var(--danger-glow); color: #fff; box-shadow: 0 0 20px var(--danger-glow);
-        }
-
-        .btn-neon-success {
-            border-color: var(--success-glow); color: var(--success-glow);
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.2) inset;
-        }
-        .btn-neon-success:hover {
-            background: var(--success-glow); color: #000; box-shadow: 0 0 20px var(--success-glow);
-        }
-
-        .input-cyber {
-            width: 100%; background: rgba(0,0,0,0.6); border: 1px solid var(--glass-border);
-            color: #fff; padding: 12px 15px; border-radius: 8px; outline: none; font-size: 16px;
-            margin-bottom: 15px; transition: all 0.3s;
-        }
+        .btn-neon { background: transparent; color: var(--primary-glow); border: 1px solid var(--primary-glow); padding: 10px 20px; border-radius: 8px; font-family: 'Orbitron', sans-serif; font-weight: 700; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; box-shadow: 0 0 10px rgba(0, 243, 255, 0.2) inset; text-align: center; }
+        .btn-neon:hover { background: var(--primary-glow); color: #000; box-shadow: 0 0 20px var(--primary-glow); }
+        .btn-neon-danger { border-color: var(--danger-glow); color: var(--danger-glow); box-shadow: 0 0 10px rgba(255, 0, 60, 0.2) inset; background: transparent; padding: 10px 20px; border-radius: 8px; font-family: 'Orbitron', font-weight: 700; cursor: pointer; transition: 0.3s; }
+        .btn-neon-danger:hover { background: var(--danger-glow); color: #fff; box-shadow: 0 0 20px var(--danger-glow); }
+        .btn-neon-success { border-color: var(--success-glow); color: var(--success-glow); box-shadow: 0 0 10px rgba(0, 255, 102, 0.2) inset; background: transparent; padding: 10px 20px; border-radius: 8px; font-family: 'Orbitron', font-weight: 700; cursor: pointer; transition: 0.3s;}
+        .btn-neon-success:hover { background: var(--success-glow); color: #000; box-shadow: 0 0 20px var(--success-glow); }
+        .input-cyber { width: 100%; background: rgba(0,0,0,0.6); border: 1px solid var(--glass-border); color: #fff; padding: 12px 15px; border-radius: 8px; outline: none; font-size: 16px; margin-bottom: 15px; transition: all 0.3s; }
         .input-cyber:focus { border-color: var(--danger-glow); box-shadow: 0 0 10px rgba(255, 0, 60, 0.3); }
-
         .hidden { display: none !important; }
-
-        @keyframes pulse-glow {
-            0% { box-shadow: 0 0 10px rgba(255, 0, 60, 0.3); text-shadow: 0 0 10px rgba(255, 0, 60, 0.3); }
-            50% { box-shadow: 0 0 25px rgba(255, 0, 60, 0.6); text-shadow: 0 0 25px rgba(255, 0, 60, 0.6); }
-            100% { box-shadow: 0 0 10px rgba(255, 0, 60, 0.3); text-shadow: 0 0 10px rgba(255, 0, 60, 0.3); }
-        }
-
-        /* SPLASH SCREEN */
-        #splash-screen {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: #000; z-index: 9999; display: flex; flex-direction: column;
-            justify-content: center; align-items: center; transition: opacity 0.5s ease;
-        }
+        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 10px rgba(255, 0, 60, 0.3); text-shadow: 0 0 10px rgba(255, 0, 60, 0.3); } 50% { box-shadow: 0 0 25px rgba(255, 0, 60, 0.6); text-shadow: 0 0 25px rgba(255, 0, 60, 0.6); } }
+        
+        /* Layout */
+        #splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; display: flex; flex-direction: column; justify-content: center; align-items: center; transition: opacity 0.5s ease; }
         .loader-logo { font-size: 2rem; color: #fff; text-align: center; animation: pulse-glow 1.5s infinite; }
         .loader-bar { width: 200px; height: 4px; background: #333; margin-top: 20px; border-radius: 2px; overflow: hidden; }
         .loader-fill { height: 100%; background: var(--danger-glow); width: 0%; animation: loading 1.5s ease forwards; }
         @keyframes loading { to { width: 100%; } }
-
-        /* ADMIN APP LAYOUT */
         #app-container { padding-bottom: 80px; min-height: 100vh; }
-
-        /* HEADER */
-        header {
-            position: sticky; top: 0; z-index: 100; padding: 15px 20px;
-            display: flex; justify-content: space-between; align-items: center;
-            border-bottom-left-radius: 0; border-bottom-right-radius: 0;
-            border-top: none; border-left: none; border-right: none;
-            border-bottom: 1px solid var(--danger-glow);
-            background: rgba(10, 10, 15, 0.9);
-        }
+        header { position: sticky; top: 0; z-index: 100; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--danger-glow); background: rgba(10, 10, 15, 0.9); }
         .logo { font-size: 1.2rem; font-weight: 900; color: #fff; }
-        
-        /* SECTIONS */
         section { padding: 15px; animation: fadeIn 0.4s ease; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .section-title { font-size: 1.3rem; margin-bottom: 15px; border-left: 4px solid var(--danger-glow); padding-left: 10px; }
-
-        /* DASHBOARD STATS */
         .stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
         .stat-card { padding: 15px; text-align: center; border-color: var(--danger-glow); position: relative; overflow: hidden; }
         .stat-card i { position: absolute; top: -10px; right: -10px; font-size: 4rem; opacity: 0.1; color: var(--danger-glow); }
         .stat-value { font-family: 'Orbitron'; font-size: 1.5rem; color: #fff; font-weight: bold; margin-bottom: 5px; }
         .stat-label { font-size: 0.8rem; color: var(--danger-glow); text-transform: uppercase; font-weight: bold; }
-
-        /* LIST CARDS */
         .admin-list { display: flex; flex-direction: column; gap: 10px; }
-        .admin-card {
-            display: flex; flex-direction: column; padding: 12px; border-left: 3px solid var(--primary-glow);
-        }
+        .admin-card { display: flex; flex-direction: column; padding: 12px; border-left: 3px solid var(--primary-glow); }
         .admin-card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 5px; }
         .admin-card-title { font-weight: bold; font-size: 1.1rem; }
         .admin-badge { padding: 3px 8px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
@@ -167,55 +59,25 @@
         .admin-card-body { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px; }
         .admin-card-actions { display: flex; gap: 10px; }
         .admin-card-actions button { flex: 1; padding: 8px; font-size: 0.8rem; }
-
-        /* IMAGE PREVIEW SYSTEM */
-        .image-preview-box {
-            width: 100%; height: 150px; border: 2px dashed var(--glass-border); border-radius: 8px;
-            display: flex; justify-content: center; align-items: center; overflow: hidden; margin-bottom: 15px;
-            background: rgba(0,0,0,0.3); position: relative;
-        }
+        .image-preview-box { width: 100%; height: 150px; border: 2px dashed var(--glass-border); border-radius: 8px; display: flex; justify-content: center; align-items: center; overflow: hidden; margin-bottom: 15px; background: rgba(0,0,0,0.3); position: relative; }
         .image-preview-box img { width: 100%; height: 100%; object-fit: cover; }
         .image-preview-box span { color: var(--text-muted); font-size: 0.9rem; position: absolute; pointer-events: none; }
-
-        /* BOTTOM NAV */
-        #bottom-nav {
-            position: fixed; bottom: 0; left: 0; width: 100%;
-            background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px);
-            border-top: 1px solid var(--danger-glow);
-            display: flex; justify-content: space-around; padding: 12px 0; z-index: 100;
-        }
-        .nav-item {
-            color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; cursor: pointer; transition: color 0.3s;
-        }
+        #bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(10, 10, 15, 0.95); backdrop-filter: blur(10px); border-top: 1px solid var(--danger-glow); display: flex; justify-content: space-around; padding: 12px 0; z-index: 100; }
+        .nav-item { color: var(--text-muted); display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; cursor: pointer; transition: color 0.3s; }
         .nav-item i { font-size: 1.2rem; margin-bottom: 3px; }
         .nav-item.active { color: var(--danger-glow); text-shadow: 0 0 10px var(--danger-glow); }
-
-        /* MODALS */
-        .modal-overlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); backdrop-filter: blur(8px);
-            z-index: 1000; display: flex; justify-content: center; align-items: center;
-        }
-        .modal-content {
-            width: 95%; max-width: 400px; padding: 25px; position: relative; border-color: var(--danger-glow);
-            max-height: 90vh; overflow-y: auto;
-        }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); z-index: 1000; display: flex; justify-content: center; align-items: center; }
+        .modal-content { width: 95%; max-width: 400px; padding: 25px; position: relative; border-color: var(--danger-glow); max-height: 90vh; overflow-y: auto; }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--danger-glow); cursor: pointer; }
-
-        /* AUTH FORMS */
         .auth-container { display: flex; flex-direction: column; justify-content: center; min-height: 80vh; max-width: 400px; margin: auto; padding: 20px;}
         .auth-logo { text-align: center; font-size: 2rem; margin-bottom: 25px; color: var(--danger-glow); }
-
         footer { text-align: center; padding: 20px; color: var(--text-muted); font-size: 0.8rem; margin-bottom: 20px; }
     </style>
 </head>
 <body>
 
     <div id="splash-screen">
-        <div class="loader-logo orbitron">
-            <span class="neon-text-danger">SYSTEM</span><br>
-            <span class="neon-text" style="font-size: 1.2rem;">OVERRIDE INITIATED</span>
-        </div>
+        <div class="loader-logo orbitron"><span class="neon-text-danger">SYSTEM</span><br><span class="neon-text" style="font-size: 1.2rem;">OVERRIDE INITIATED</span></div>
         <div class="loader-bar"><div class="loader-fill"></div></div>
     </div>
 
@@ -232,7 +94,6 @@
     </section>
 
     <div id="app-container" class="hidden">
-        
         <header class="glass-panel" id="main-header">
             <div class="logo orbitron neon-text-danger"><i class="fas fa-terminal"></i> ADMIN PANNEL</div>
             <i class="fas fa-power-off" style="color: var(--danger-glow); font-size: 1.2rem; cursor: pointer;" onclick="logoutAdmin()"></i>
@@ -241,41 +102,12 @@
         <section id="sec-dashboard">
             <h2 class="section-title">Live Telemetry</h2>
             <div class="stats-grid">
-                <div class="glass-panel stat-card">
-                    <i class="fas fa-users"></i>
-                    <div class="stat-value" id="stat-users">1,245</div>
-                    <div class="stat-label">Total Users</div>
-                </div>
-                <div class="glass-panel stat-card">
-                    <i class="fas fa-rupee-sign"></i>
-                    <div class="stat-value" id="stat-revenue">₹84.5K</div>
-                    <div class="stat-label">Revenue</div>
-                </div>
-                <div class="glass-panel stat-card">
-                    <i class="fas fa-shopping-cart"></i>
-                    <div class="stat-value" id="stat-orders">892</div>
-                    <div class="stat-label">Orders</div>
-                </div>
-                <div class="glass-panel stat-card" style="border-color: var(--warning-glow);">
-                    <i class="fas fa-clock"></i>
-                    <div class="stat-value" style="color: var(--warning-glow);" id="stat-pending">14</div>
-                    <div class="stat-label" style="color: var(--warning-glow);">Pending Pay</div>
-                </div>
-                <div class="glass-panel stat-card">
-                    <i class="fas fa-download"></i>
-                    <div class="stat-value" id="stat-downloads">45.2K</div>
-                    <div class="stat-label">Downloads</div>
-                </div>
-                <div class="glass-panel stat-card" style="border-color: var(--success-glow);">
-                    <i class="fas fa-signal"></i>
-                    <div class="stat-value" style="color: var(--success-glow);" id="stat-online">342</div>
-                    <div class="stat-label" style="color: var(--success-glow);">Online Now</div>
-                </div>
+                <div class="glass-panel stat-card"><i class="fas fa-users"></i><div class="stat-value" id="stat-users">0</div><div class="stat-label">Total Users</div></div>
+                <div class="glass-panel stat-card"><i class="fas fa-rupee-sign"></i><div class="stat-value" id="stat-revenue">₹0</div><div class="stat-label">Revenue</div></div>
+                <div class="glass-panel stat-card"><i class="fas fa-shopping-cart"></i><div class="stat-value" id="stat-orders">0</div><div class="stat-label">Orders</div></div>
+                <div class="glass-panel stat-card" style="border-color: var(--warning-glow);"><i class="fas fa-clock"></i><div class="stat-value" style="color: var(--warning-glow);" id="stat-pending">0</div><div class="stat-label" style="color: var(--warning-glow);">Pending Pay</div></div>
             </div>
-            
-            <button class="btn-neon" style="width: 100%; margin-top: 10px;" onclick="navTo('payments', document.querySelectorAll('.nav-item')[2])">
-                <i class="fas fa-tasks"></i> Process Pending Orders
-            </button>
+            <button class="btn-neon" style="width: 100%; margin-top: 10px;" onclick="navTo('payments', document.querySelectorAll('.nav-item')[2])"><i class="fas fa-tasks"></i> Process Pending Orders</button>
         </section>
 
         <section id="sec-products" class="hidden">
@@ -283,67 +115,50 @@
                 <h2 class="section-title" style="margin-bottom: 0;">Loot Inventory</h2>
                 <button class="btn-neon-danger" style="padding: 5px 10px; font-size: 0.8rem;" onclick="openProductModal()"><i class="fas fa-plus"></i> ADD</button>
             </div>
-            <div class="admin-list" id="product-list">
-                </div>
+            <div class="admin-list" id="product-list"></div>
         </section>
 
         <section id="sec-payments" class="hidden">
             <h2 class="section-title">Payment Verification</h2>
-            <div class="admin-list" id="payment-list">
-                </div>
+            <div class="admin-list" id="payment-list"></div>
         </section>
 
         <section id="sec-users" class="hidden">
             <h2 class="section-title">Player Database</h2>
-            <input type="text" id="user-search" class="input-cyber" placeholder="Search Email or ID..." onkeyup="filterUsers()">
-            <div class="admin-list" id="user-list">
-                </div>
+            <div class="admin-list" id="user-list"></div>
         </section>
 
         <section id="sec-system" class="hidden">
             <h2 class="section-title">System Override</h2>
             
             <div class="glass-panel" style="padding: 15px; margin-bottom: 15px;">
-                <h3 class="orbitron neon-text" style="font-size: 1rem; margin-bottom: 15px;"><i class="fas fa-link"></i> Global Media Links</h3>
-                
-                <label style="font-size: 0.8rem; color: var(--text-muted);">Promo Video (YouTube Embed URL)</label>
-                <input type="url" id="sys-video" class="input-cyber" value="https://www.youtube.com/embed/dQw4w9WgXcQ">
-                
-                <label style="font-size: 0.8rem; color: var(--text-muted);">Banner Ad Image URL</label>
-                <input type="url" id="sys-ad-img" class="input-cyber" value="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop" oninput="previewSystemImage('sys-ad-img', 'ad-preview')">
-                <div class="image-preview-box" style="height: 100px;">
-                    <span id="ad-preview-text">Ad Preview</span>
-                    <img id="ad-preview" src="https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop" onerror="this.style.display='none'; document.getElementById('ad-preview-text').style.display='block';">
-                </div>
-
-                <button class="btn-neon-danger" style="width: 100%;" onclick="saveSystemSettings('media')">UPDATE MEDIA LINKS</button>
+                <h3 class="orbitron neon-text" style="font-size: 1rem; margin-bottom: 15px;"><i class="fas fa-image"></i> Add Gallery / Banner</h3>
+                <input type="url" id="sys-gallery-img" class="input-cyber" placeholder="https://example.com/img.jpg" required>
+                <button class="btn-neon-success" style="width: 100%;" onclick="addToGallery()"><i class="fas fa-plus"></i> PUSH TO GALLERY</button>
             </div>
 
             <div class="glass-panel" style="padding: 15px; margin-bottom: 15px;">
-                <h3 class="orbitron neon-text" style="font-size: 1rem; margin-bottom: 15px;"><i class="fas fa-qrcode"></i> UPI/QR Configuration</h3>
-                <label style="font-size: 0.8rem; color: var(--text-muted);">Official UPI ID</label>
-                <input type="text" id="sys-upi" class="input-cyber" value="gamingmitul@ybl">
-                <label style="font-size: 0.8rem; color: var(--text-muted);">QR Code Image URL</label>
-                <input type="url" id="sys-qr" class="input-cyber" value="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=gamingmitul@ybl" oninput="previewSystemImage('sys-qr', 'qr-preview')">
-                <div class="image-preview-box" style="height: 150px; width: 150px; margin: 0 auto 15px auto;">
-                    <img id="qr-preview" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=gamingmitul@ybl">
-                </div>
-                <button class="btn-neon-danger" style="width: 100%;" onclick="saveSystemSettings('payment')">UPDATE PAYMENT GATEWAY</button>
+                <h3 class="orbitron neon-text" style="font-size: 1rem; margin-bottom: 15px;"><i class="fas fa-link"></i> Global Links & Stats</h3>
+                <label style="font-size: 0.8rem; color: var(--text-muted);">Promo Video (YouTube Embed URL)</label>
+                <input type="url" id="sys-video" class="input-cyber">
+                
+                <label style="font-size: 0.8rem; color: var(--text-muted);">Fake Downloads Counter</label>
+                <input type="text" id="edit-downloads" class="input-cyber" placeholder="e.g. 45.2K">
+                
+                <label style="font-size: 0.8rem; color: var(--text-muted);">Fake Online Users Counter</label>
+                <input type="text" id="edit-online" class="input-cyber" placeholder="e.g. 1,204">
+
+                <button class="btn-neon-danger" style="width: 100%;" onclick="saveSystemSettings()">SYNC GLOBAL CONFIG</button>
             </div>
 
             <div class="glass-panel" style="padding: 15px;">
-                <h3 class="orbitron neon-text" style="font-size: 1rem; margin-bottom: 15px;"><i class="fas fa-sort-numeric-up"></i> Counter Manipulation</h3>
-                <div style="display: flex; gap: 10px;">
-                    <div style="flex: 1;">
-                        <label style="font-size: 0.8rem; color: var(--text-muted);">Downloads</label>
-                        <input type="text" id="edit-downloads" class="input-cyber" value="45.2K">
-                    </div>
-                    <div style="flex: 1;">
-                        <label style="font-size: 0.8rem; color: var(--text-muted);">Online</label>
-                        <input type="text" id="edit-online" class="input-cyber" value="1,204">
-                    </div>
-                </div>
-                <button class="btn-neon-danger" style="width: 100%;" onclick="saveSystemSettings('counters')">PUSH COUNTERS</button>
+                <h3 class="orbitron neon-text" style="font-size: 1rem; margin-bottom: 15px;"><i class="fas fa-qrcode"></i> UPI/QR Configuration</h3>
+                <label style="font-size: 0.8rem; color: var(--text-muted);">Official UPI ID</label>
+                <input type="text" id="sys-upi" class="input-cyber">
+                <label style="font-size: 0.8rem; color: var(--text-muted);">QR Code Image URL</label>
+                <input type="url" id="sys-qr" class="input-cyber" oninput="previewSystemImage('sys-qr', 'qr-preview')">
+                <div class="image-preview-box" style="height: 150px; width: 150px; margin: 0 auto 15px auto;"><img id="qr-preview" src=""></div>
+                <button class="btn-neon-danger" style="width: 100%;" onclick="saveSystemSettings()">SYNC PAYMENT GATEWAY</button>
             </div>
         </section>
 
@@ -351,8 +166,9 @@
             <p>Powered By <span class="orbitron neon-text-danger" style="font-weight: bold;">Gaming Mitul YT</span></p>
             <p style="font-size: 0.7rem; margin-top: 5px;">Secure Admin Portal v2.0</p>
         </footer>
+    </div>
 
-    </div> <nav id="bottom-nav" class="hidden">
+    <nav id="bottom-nav" class="hidden">
         <div class="nav-item active" onclick="navTo('dashboard', this)"><i class="fas fa-chart-line"></i>Stats</div>
         <div class="nav-item" onclick="navTo('products', this)"><i class="fas fa-box-open"></i>Products</div>
         <div class="nav-item" onclick="navTo('payments', this)"><i class="fas fa-rupee-sign"></i>Payments</div>
@@ -364,33 +180,23 @@
         <div class="glass-panel modal-content">
             <i class="fas fa-times close-modal" onclick="closeModal('product-modal')"></i>
             <h3 class="orbitron neon-text" id="modal-product-title" style="margin-bottom: 15px;">ADD PRODUCT</h3>
-            
             <form id="product-form" onsubmit="saveProduct(event)">
                 <input type="hidden" id="prod-id">
                 <input type="text" id="prod-title" class="input-cyber" placeholder="Product Name" required>
                 <div style="display: flex; gap: 10px;">
                     <input type="number" id="prod-price" class="input-cyber" placeholder="Price (₹)" style="flex: 1;" required>
                     <select id="prod-cat" class="input-cyber" style="flex: 1; padding: 10px;">
-                        <option value="Accounts">Accounts</option>
-                        <option value="Skins">Skins</option>
-                        <option value="Tools">Tools</option>
+                        <option value="Accounts">Accounts</option><option value="Skins">Skins</option><option value="Tools">Tools</option>
                     </select>
                 </div>
                 <textarea id="prod-desc" class="input-cyber" placeholder="Description" rows="2"></textarea>
-                
                 <label style="font-size: 0.8rem; color: var(--primary-glow); margin-bottom: 5px; display: block;">Image Link URL</label>
                 <input type="url" id="prod-img-url" class="input-cyber" placeholder="https://example.com/img.jpg" required oninput="previewProductImage()">
-                <div class="image-preview-box">
-                    <span id="preview-placeholder">Live Image Preview</span>
-                    <img id="prod-preview-img" src="" style="display: none;" onerror="this.style.display='none'; document.getElementById('preview-placeholder').style.display='block';">
-                </div>
-                
+                <div class="image-preview-box"><span id="preview-placeholder">Live Image Preview</span><img id="prod-preview-img" style="display: none;" onerror="this.style.display='none'; document.getElementById('preview-placeholder').style.display='block';"></div>
                 <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; cursor: pointer;">
-                    <input type="checkbox" id="prod-trending" style="width: 20px; height: 20px;">
-                    <span style="color: var(--text-main);">Mark as Trending</span>
+                    <input type="checkbox" id="prod-trending" style="width: 20px; height: 20px;"><span style="color: var(--text-main);">Mark as Trending</span>
                 </label>
-
-                <button type="submit" class="btn-neon" style="width: 100%;">SAVE PRODUCT</button>
+                <button type="submit" class="btn-neon" style="width: 100%;">SAVE TO FIRESTORE</button>
             </form>
         </div>
     </div>
@@ -399,15 +205,10 @@
         <div class="glass-panel modal-content" style="text-align: center;">
             <i class="fas fa-times close-modal" onclick="closeModal('payment-modal')"></i>
             <h3 class="orbitron neon-text" style="margin-bottom: 10px;">Review Payment</h3>
-            <div id="pay-detail-info" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;"></div>
-            
-            <div style="width: 100%; height: 250px; background: #111; border: 1px solid var(--glass-border); border-radius: 8px; margin-bottom: 15px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
-                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=400&auto=format&fit=crop" style="width: 100%; height: 100%; object-fit: cover;" alt="Payment Screenshot">
-            </div>
-
+            <div id="pay-detail-info" style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px;"></div>
             <div style="display: flex; gap: 10px;">
-                <button class="btn-neon-success" style="flex: 1;" onclick="executePaymentAction('approve')"><i class="fas fa-check"></i> APPROVE</button>
-                <button class="btn-neon-danger" style="flex: 1;" onclick="executePaymentAction('reject')"><i class="fas fa-times"></i> REJECT</button>
+                <button class="btn-neon-success" style="flex: 1;" onclick="executePaymentAction('approved')"><i class="fas fa-check"></i> APPROVE</button>
+                <button class="btn-neon-danger" style="flex: 1;" onclick="executePaymentAction('rejected')"><i class="fas fa-times"></i> REJECT</button>
             </div>
         </div>
     </div>
@@ -424,8 +225,8 @@
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, collection, doc, onSnapshot, addDoc, setDoc, updateDoc, deleteDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-        // Provided Firebase Configuration
         const firebaseConfig = {
             apiKey: "AIzaSyCwGPYu7QDPf2yLLkuzvKJW73yNyqLui98",
             authDomain: "gaming-mitul-store.firebaseapp.com",
@@ -437,66 +238,40 @@
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
+        const db = getFirestore(app);
 
-        // Security Validation Constants
+        // STRICT ADMIN CREDENTIALS REQUIRED BY SYSTEM
         const ADMIN_EMAIL = "mitulbhowmik65@gmail.com";
         const ADMIN_UID = "e5JfFhQc5iXRcK1rXufmAZDQYNw2";
 
-        // --- MOCK DATA (Simulating Firestore for the UI Prototype) ---
-        let mockProducts = [
-            { id: 1, title: "BGMI Max Mythic Acc", price: 4500, cat: "Accounts", trending: true, img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=600&auto=format&fit=crop", desc: "Level 80, 50 Mythics." },
-            { id: 2, title: "Free Fire V-Badge", price: 2100, cat: "Accounts", trending: true, img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=600&auto=format&fit=crop", desc: "Rare V-Badge account." },
-            { id: 3, title: "Mitul VIP Injector", price: 500, cat: "Tools", trending: false, img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=600&auto=format&fit=crop", desc: "Safe utility tool." }
-        ];
-
-        let mockPayments = [
-            { id: 101, user: "playerOne@gmail.com", product: "BGMI Max Mythic Acc", amount: 4500, utr: "312345678912", status: "pending", date: "Today 10:30 AM" },
-            { id: 102, user: "proGamerX@yahoo.com", product: "Free Fire V-Badge", amount: 2100, utr: "987654321098", status: "pending", date: "Today 09:15 AM" },
-            { id: 103, user: "noobMaster@mail.com", product: "Mitul VIP Injector", amount: 500, utr: "112233445566", status: "approved", date: "Yesterday" }
-        ];
-
-        let mockUsers = [
-            { id: "u1", email: "playerOne@gmail.com", orders: 2, status: "Active" },
-            { id: "u2", email: "proGamerX@yahoo.com", orders: 5, status: "Active" },
-            { id: "u3", email: "hackerBoy@dark.net", orders: 0, status: "Banned" }
-        ];
-
+        let productsData = [];
+        let paymentsData = [];
+        let usersData = [];
         let activePaymentId = null;
 
-        // --- UI INITIALIZATION & SECURITY CHECK ---
         window.onload = () => {
             setTimeout(() => {
                 document.getElementById('splash-screen').style.opacity = '0';
                 setTimeout(() => {
                     document.getElementById('splash-screen').classList.add('hidden');
                     
-                    // Auth State Listener with STRICT SECURITY LOGIC
                     onAuthStateChanged(auth, (user) => {
                         if (user) {
                             if (user.email === ADMIN_EMAIL && user.uid === ADMIN_UID) {
-                                // Authorized Access
                                 setupAdminUI();
                             } else {
                                 // UNAUTHORIZED ACCESS ATTEMPT DETECTED
                                 showNotification("Access Denied", "Unauthorized user. You do not have admin privileges. Redirecting to store...");
                                 document.getElementById('app-container').classList.add('hidden');
                                 document.getElementById('bottom-nav').classList.add('hidden');
-                                
-                                // Sign out and Redirect to index.html
-                                signOut(auth).then(() => {
-                                    setTimeout(() => {
-                                        window.location.href = "index.html";
-                                    }, 2500);
-                                });
+                                signOut(auth).then(() => setTimeout(() => window.location.href = "index.html", 2500));
                             }
                         } else {
-                            // Show login
                             document.getElementById('app-container').classList.add('hidden');
                             document.getElementById('bottom-nav').classList.add('hidden');
                             document.getElementById('sec-auth').classList.remove('hidden');
                         }
                     });
-
                 }, 500);
             }, 1500);
         };
@@ -506,282 +281,203 @@
             document.getElementById('app-container').classList.remove('hidden');
             document.getElementById('bottom-nav').classList.remove('hidden');
             navTo('dashboard', document.querySelectorAll('.nav-item')[0]);
-            renderData();
+            initRealtimeSync();
         }
 
-        // --- ADMIN LOGIN LOGIC ---
         window.handleAdminLogin = async (e) => {
             e.preventDefault();
             const email = document.getElementById('admin-email').value;
             const pass = document.getElementById('admin-pass').value;
             const btn = document.getElementById('admin-login-btn');
-            
             btn.innerText = "VERIFYING...";
-            
-            try {
-                // Firebase Login
-                await signInWithEmailAndPassword(auth, email, pass);
-                // onAuthStateChanged will handle the validation check and redirection if they aren't the real admin
-            } catch (error) {
-                showNotification("Auth Error", "Invalid Credentials.");
-                btn.innerText = "AUTHORIZE ACCESS";
-            }
+            try { await signInWithEmailAndPassword(auth, email, pass); } 
+            catch (error) { showNotification("Auth Error", "Invalid Credentials."); btn.innerText = "AUTHORIZE ACCESS"; }
         };
 
-        window.logoutAdmin = () => {
-            signOut(auth).then(() => {
-                window.location.reload();
+        window.logoutAdmin = () => signOut(auth).then(() => window.location.reload());
+
+        // --- REALTIME SYNC ENGINE ---
+        function initRealtimeSync() {
+            // Products
+            onSnapshot(collection(db, "products"), (snapshot) => {
+                productsData = []; snapshot.forEach(doc => productsData.push({ id: doc.id, ...doc.data() }));
+                renderProducts();
             });
-        };
 
-        // --- NAVIGATION LOGIC ---
+            // Payments
+            onSnapshot(collection(db, "payments"), (snapshot) => {
+                paymentsData = []; let revenue = 0;
+                snapshot.forEach(doc => { 
+                    const d = doc.data(); paymentsData.push({ id: doc.id, ...d }); 
+                    if(d.status === 'approved') revenue += parseInt(d.amount);
+                });
+                document.getElementById('stat-revenue').innerText = `₹${revenue}`;
+                document.getElementById('stat-orders').innerText = paymentsData.length;
+                document.getElementById('stat-pending').innerText = paymentsData.filter(p => p.status === 'pending').length;
+                renderPayments();
+            });
+
+            // Users
+            onSnapshot(collection(db, "users"), (snapshot) => {
+                usersData = []; snapshot.forEach(doc => usersData.push({ id: doc.id, ...doc.data() }));
+                document.getElementById('stat-users').innerText = usersData.length;
+                renderUsers();
+            });
+
+            // System Global Config
+            onSnapshot(doc(db, "settings", "global"), (docSnapshot) => {
+                if(docSnapshot.exists()){
+                    const data = docSnapshot.data();
+                    document.getElementById('sys-video').value = data.videoUrl || '';
+                    document.getElementById('sys-upi').value = data.upiId || '';
+                    document.getElementById('sys-qr').value = data.qrUrl || '';
+                    document.getElementById('edit-downloads').value = data.downloads || '';
+                    document.getElementById('edit-online').value = data.online || '';
+                    if(data.qrUrl) document.getElementById('qr-preview').src = data.qrUrl;
+                }
+            });
+        }
+
         window.navTo = (targetId, element) => {
-            ['dashboard', 'products', 'payments', 'users', 'system'].forEach(id => {
-                const el = document.getElementById(`sec-${id}`);
-                if(el) el.classList.add('hidden');
-            });
+            ['dashboard', 'products', 'payments', 'users', 'system'].forEach(id => document.getElementById(`sec-${id}`).classList.add('hidden'));
             document.getElementById(`sec-${targetId}`).classList.remove('hidden');
-            
             document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
             if(element) element.classList.add('active');
-            
-            // Refresh data on tab switch
-            if(targetId === 'products') renderProducts();
-            if(targetId === 'payments') renderPayments();
-            if(targetId === 'users') renderUsers();
         };
 
-        // --- RENDER LOGIC ---
-        function renderData() {
-            renderProducts();
-            renderPayments();
-            renderUsers();
-            updateDashboardStats();
-        }
-
-        function updateDashboardStats() {
-            const pendingCount = mockPayments.filter(p => p.status === 'pending').length;
-            document.getElementById('stat-pending').innerText = pendingCount;
-            document.getElementById('stat-orders').innerText = mockPayments.length + 889; // Adding base mock number
-        }
-
-        // --- PRODUCT MANAGEMENT (IMAGE LINK SYSTEM) ---
-        window.renderProducts = () => {
-            const container = document.getElementById('product-list');
-            container.innerHTML = '';
-            mockProducts.forEach(p => {
+        // --- PRODUCTS CRUD ---
+        function renderProducts() {
+            const container = document.getElementById('product-list'); container.innerHTML = '';
+            productsData.forEach(p => {
                 container.innerHTML += `
                     <div class="glass-panel admin-card">
-                        <div class="admin-card-header">
-                            <span class="admin-card-title">${p.title}</span>
-                            <span class="admin-badge ${p.trending ? 'badge-danger' : 'badge-success'}">${p.trending ? 'HOT' : p.cat}</span>
-                        </div>
+                        <div class="admin-card-header"><span class="admin-card-title">${p.title}</span><span class="admin-badge ${p.trending ? 'badge-danger' : 'badge-success'}">${p.trending ? 'HOT' : p.cat}</span></div>
                         <div style="display: flex; gap: 10px; margin-bottom: 10px;">
-                            <img src="${p.img}" style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover; border: 1px solid var(--glass-border);" onerror="this.src='https://via.placeholder.com/60/000000/ff003c?text=IMG'">
-                            <div>
-                                <div style="color: var(--success-glow); font-family: 'Orbitron';">₹${p.price}</div>
-                                <div style="font-size: 0.8rem; color: var(--text-muted);">${p.desc.substring(0, 30)}...</div>
-                            </div>
+                            <img src="${p.img}" style="width: 60px; height: 60px; border-radius: 8px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/60/000000/ff003c?text=IMG'">
+                            <div><div style="color: var(--success-glow); font-family: 'Orbitron';">₹${p.price}</div><div style="font-size: 0.8rem; color: var(--text-muted);">${p.desc?.substring(0, 30) || ''}...</div></div>
                         </div>
                         <div class="admin-card-actions">
-                            <button class="btn-neon" style="padding: 5px;" onclick="editProduct(${p.id})"><i class="fas fa-edit"></i> Edit</button>
-                            <button class="btn-neon-danger" style="padding: 5px;" onclick="deleteProduct(${p.id})"><i class="fas fa-trash"></i> Del</button>
+                            <button class="btn-neon" style="padding: 5px;" onclick="editProduct('${p.id}')"><i class="fas fa-edit"></i> Edit</button>
+                            <button class="btn-neon-danger" style="padding: 5px;" onclick="deleteProduct('${p.id}')"><i class="fas fa-trash"></i> Del</button>
                         </div>
-                    </div>
-                `;
+                    </div>`;
             });
-        };
+        }
 
         window.openProductModal = () => {
-            document.getElementById('product-form').reset();
-            document.getElementById('prod-id').value = '';
-            document.getElementById('prod-preview-img').style.display = 'none';
-            document.getElementById('preview-placeholder').style.display = 'block';
+            document.getElementById('product-form').reset(); document.getElementById('prod-id').value = '';
+            document.getElementById('prod-preview-img').style.display = 'none'; document.getElementById('preview-placeholder').style.display = 'block';
             document.getElementById('modal-product-title').innerText = "ADD PRODUCT";
             document.getElementById('product-modal').classList.remove('hidden');
         };
 
         window.editProduct = (id) => {
-            const p = mockProducts.find(x => x.id === id);
+            const p = productsData.find(x => x.id === id);
             if(p) {
-                document.getElementById('prod-id').value = p.id;
-                document.getElementById('prod-title').value = p.title;
-                document.getElementById('prod-price').value = p.price;
-                document.getElementById('prod-cat').value = p.cat;
-                document.getElementById('prod-desc').value = p.desc;
-                document.getElementById('prod-img-url').value = p.img;
-                document.getElementById('prod-trending').checked = p.trending;
-                
-                previewProductImage(); // Update preview
+                document.getElementById('prod-id').value = p.id; document.getElementById('prod-title').value = p.title;
+                document.getElementById('prod-price').value = p.price; document.getElementById('prod-cat').value = p.cat;
+                document.getElementById('prod-desc').value = p.desc || ''; document.getElementById('prod-img-url').value = p.img;
+                document.getElementById('prod-trending').checked = p.trending || false;
+                previewProductImage();
                 document.getElementById('modal-product-title').innerText = "EDIT PRODUCT";
                 document.getElementById('product-modal').classList.remove('hidden');
             }
         };
 
-        window.saveProduct = (e) => {
+        window.saveProduct = async (e) => {
             e.preventDefault();
             const id = document.getElementById('prod-id').value;
-            const newProd = {
-                id: id ? parseInt(id) : Date.now(),
-                title: document.getElementById('prod-title').value,
-                price: parseInt(document.getElementById('prod-price').value),
-                cat: document.getElementById('prod-cat').value,
-                desc: document.getElementById('prod-desc').value,
-                img: document.getElementById('prod-img-url').value, // CORE IMAGE LINK SYSTEM
-                trending: document.getElementById('prod-trending').checked
+            const prodData = {
+                title: document.getElementById('prod-title').value, price: parseInt(document.getElementById('prod-price').value),
+                cat: document.getElementById('prod-cat').value, desc: document.getElementById('prod-desc').value,
+                img: document.getElementById('prod-img-url').value, trending: document.getElementById('prod-trending').checked
             };
-
-            if(id) {
-                const idx = mockProducts.findIndex(x => x.id === parseInt(id));
-                mockProducts[idx] = newProd;
-                showNotification("Success", "Product updated and synced to User Panel.");
-            } else {
-                mockProducts.unshift(newProd);
-                showNotification("Success", "New product deployed to Store.");
-            }
-            
-            closeModal('product-modal');
-            renderProducts();
+            try {
+                if(id) { await updateDoc(doc(db, "products", id), prodData); showNotification("Success", "Product updated globally."); } 
+                else { await addDoc(collection(db, "products"), { ...prodData, createdAt: serverTimestamp() }); showNotification("Success", "Product pushed to Store."); }
+                closeModal('product-modal');
+            } catch(e) { showNotification("Error", "Failed to save product."); }
         };
 
-        window.deleteProduct = (id) => {
-            if(confirm("Delete this item permanently?")) {
-                mockProducts = mockProducts.filter(x => x.id !== id);
-                renderProducts();
-            }
-        };
+        window.deleteProduct = async (id) => { if(confirm("Permanently delete this item from the Store?")) { await deleteDoc(doc(db, "products", id)); } };
+        window.previewProductImage = () => { const url = document.getElementById('prod-img-url').value; const imgEl = document.getElementById('prod-preview-img'); const ph = document.getElementById('preview-placeholder'); if(url) { imgEl.src = url; imgEl.style.display = 'block'; ph.style.display = 'none'; } else { imgEl.style.display = 'none'; ph.style.display = 'block'; } };
+        window.previewSystemImage = (inId, imgId) => { const url = document.getElementById(inId).value; if(url) document.getElementById(imgId).src = url; };
 
-        // Live Image Preview Logic
-        window.previewProductImage = () => {
-            const url = document.getElementById('prod-img-url').value;
-            const imgEl = document.getElementById('prod-preview-img');
-            const placeholder = document.getElementById('preview-placeholder');
-            
-            if(url) {
-                imgEl.src = url;
-                imgEl.style.display = 'block';
-                placeholder.style.display = 'none';
-            } else {
-                imgEl.style.display = 'none';
-                placeholder.style.display = 'block';
-            }
-        };
-
-        window.previewSystemImage = (inputId, imgId) => {
-            const url = document.getElementById(inputId).value;
-            const imgEl = document.getElementById(imgId);
-            if(url) imgEl.src = url;
-        };
-
-        // --- PAYMENT MANAGEMENT ---
-        window.renderPayments = () => {
-            const container = document.getElementById('payment-list');
-            container.innerHTML = '';
-            
-            // Show pending first
-            const sorted = [...mockPayments].sort((a,b) => (a.status === 'pending' ? -1 : 1));
-
+        // --- PAYMENTS ---
+        function renderPayments() {
+            const container = document.getElementById('payment-list'); container.innerHTML = '';
+            const sorted = [...paymentsData].sort((a,b) => (a.status === 'pending' ? -1 : 1));
             sorted.forEach(p => {
                 let badgeClass = p.status === 'pending' ? 'badge-pending' : (p.status === 'approved' ? 'badge-success' : 'badge-danger');
                 container.innerHTML += `
                     <div class="glass-panel admin-card" style="${p.status !== 'pending' ? 'opacity: 0.6;' : 'border-color: var(--warning-glow);'}">
-                        <div class="admin-card-header">
-                            <span class="admin-card-title">${p.user.split('@')[0]}</span>
-                            <span class="admin-badge ${badgeClass}">${p.status}</span>
-                        </div>
-                        <div class="admin-card-body">
-                            <div><strong>Item:</strong> ${p.product}</div>
-                            <div><strong>Amount:</strong> ₹${p.amount} | <strong>UTR:</strong> ${p.utr}</div>
-                            <div style="font-size: 0.75rem; margin-top: 5px;">${p.date}</div>
-                        </div>
-                        ${p.status === 'pending' ? `
-                            <button class="btn-neon" style="width: 100%; padding: 8px; font-size: 0.8rem;" onclick="reviewPayment(${p.id})">
-                                <i class="fas fa-search"></i> Verify Screenshot
-                            </button>
-                        ` : ''}
-                    </div>
-                `;
+                        <div class="admin-card-header"><span class="admin-card-title">${p.userEmail.split('@')[0]}</span><span class="admin-badge ${badgeClass}">${p.status}</span></div>
+                        <div class="admin-card-body"><div><strong>Item:</strong> ${p.productTitle}</div><div><strong>Amount:</strong> ₹${p.amount} | <strong>UTR:</strong> ${p.utr}</div></div>
+                        ${p.status === 'pending' ? `<button class="btn-neon" style="width: 100%; padding: 8px; font-size: 0.8rem;" onclick="reviewPayment('${p.id}')"><i class="fas fa-search"></i> Verify Screenshot / UTR</button>` : ''}
+                    </div>`;
             });
-            updateDashboardStats();
-        };
+        }
 
         window.reviewPayment = (id) => {
-            const p = mockPayments.find(x => x.id === id);
+            const p = paymentsData.find(x => x.id === id);
             if(p) {
                 activePaymentId = id;
-                document.getElementById('pay-detail-info').innerHTML = `
-                    User: ${p.user}<br>
-                    Item: ${p.product}<br>
-                    <strong style="color:var(--primary-glow)">UTR: ${p.utr}</strong>
-                `;
+                document.getElementById('pay-detail-info').innerHTML = `User: ${p.userEmail}<br>Item: ${p.productTitle}<br><strong style="color:var(--primary-glow)">UTR: ${p.utr}</strong>`;
                 document.getElementById('payment-modal').classList.remove('hidden');
             }
         };
 
-        window.executePaymentAction = (action) => {
-            const idx = mockPayments.findIndex(x => x.id === activePaymentId);
-            if(idx > -1) {
-                mockPayments[idx].status = action === 'approve' ? 'approved' : 'rejected';
-                showNotification("Payment " + action.toUpperCase(), `Order marked as ${action}. User download unlocked.`);
+        window.executePaymentAction = async (status) => {
+            if(activePaymentId) {
+                await updateDoc(doc(db, "payments", activePaymentId), { status: status });
+                showNotification("Payment Processed", `Order marked as ${status}. Client app unlocked dynamically.`);
                 closeModal('payment-modal');
-                renderPayments();
             }
         };
 
-        // --- USER MANAGEMENT ---
-        window.renderUsers = () => {
-            const container = document.getElementById('user-list');
-            container.innerHTML = '';
-            const q = document.getElementById('user-search') ? document.getElementById('user-search').value.toLowerCase() : '';
-            
-            mockUsers.forEach(u => {
-                if(q && !u.email.toLowerCase().includes(q)) return;
-                
+        // --- USERS ---
+        function renderUsers() {
+            const container = document.getElementById('user-list'); container.innerHTML = '';
+            usersData.forEach(u => {
                 let badgeClass = u.status === 'Active' ? 'badge-success' : 'badge-danger';
                 container.innerHTML += `
                     <div class="glass-panel admin-card">
-                        <div class="admin-card-header">
-                            <span class="admin-card-title" style="font-size: 1rem;"><i class="fas fa-user"></i> ${u.email}</span>
-                            <span class="admin-badge ${badgeClass}" id="status-${u.id}">${u.status}</span>
-                        </div>
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div style="font-size: 0.8rem; color: var(--text-muted);">Total Orders: ${u.orders}</div>
-                            <button class="btn-neon-danger" style="padding: 4px 10px; font-size: 0.7rem;" onclick="toggleUserStatus('${u.id}')">
-                                ${u.status === 'Active' ? 'BAN USER' : 'UNBAN'}
-                            </button>
-                        </div>
-                    </div>
-                `;
+                        <div class="admin-card-header"><span class="admin-card-title" style="font-size: 1rem;"><i class="fas fa-user"></i> ${u.email}</span><span class="admin-badge ${badgeClass}">${u.status}</span></div>
+                        <div style="display: flex; justify-content: space-between; align-items: center;"><div style="font-size: 0.8rem; color: var(--text-muted);">Platform Access</div>
+                        <button class="btn-neon-danger" style="padding: 4px 10px; font-size: 0.7rem;" onclick="toggleUserStatus('${u.id}', '${u.status}')">${u.status === 'Active' ? 'BAN' : 'UNBAN'}</button></div>
+                    </div>`;
             });
+        }
+
+        window.toggleUserStatus = async (id, currentStatus) => {
+            const newStatus = currentStatus === 'Active' ? 'Banned' : 'Active';
+            await updateDoc(doc(db, "users", id), { status: newStatus });
+            showNotification("Database Updated", `User privileges set to: ${newStatus}.`);
         };
 
-        window.filterUsers = () => renderUsers();
-
-        window.toggleUserStatus = (id) => {
-            const user = mockUsers.find(x => x.id === id);
-            if(user) {
-                user.status = user.status === 'Active' ? 'Banned' : 'Active';
-                renderUsers();
-                showNotification("Database Updated", `User status changed to ${user.status}.`);
+        // --- SYSTEM SETTINGS (Gallery & Global Config) ---
+        window.addToGallery = async () => {
+            const url = document.getElementById('sys-gallery-img').value.trim();
+            if(url) {
+                await addDoc(collection(db, "gallery"), { url: url, createdAt: serverTimestamp() });
+                document.getElementById('sys-gallery-img').value = '';
+                showNotification("Gallery Synced", "Image URL pushed to User Panel gallery & slider.");
             }
         };
 
-        // --- SYSTEM SETTINGS ---
-        window.saveSystemSettings = (type) => {
-            showNotification("System Overridden", `${type.toUpperCase()} configuration deployed to main server globally.`);
+        window.saveSystemSettings = async () => {
+            await setDoc(doc(db, "settings", "global"), {
+                videoUrl: document.getElementById('sys-video').value,
+                upiId: document.getElementById('sys-upi').value,
+                qrUrl: document.getElementById('sys-qr').value,
+                downloads: document.getElementById('edit-downloads').value,
+                online: document.getElementById('edit-online').value
+            }, { merge: true });
+            showNotification("System Overridden", "Global configuration pushed to realtime database.");
         };
 
-        // --- UTILS ---
-        window.showNotification = (title, body) => {
-            document.getElementById('notif-title').innerText = title;
-            document.getElementById('notif-body').innerText = body;
-            document.getElementById('global-modal').classList.remove('hidden');
-        };
-
-        window.closeModal = (id) => {
-            document.getElementById(id).classList.add('hidden');
-        };
-
+        window.showNotification = (title, body) => { document.getElementById('notif-title').innerText = title; document.getElementById('notif-body').innerText = body; document.getElementById('global-modal').classList.remove('hidden'); };
+        window.closeModal = (id) => document.getElementById(id).classList.add('hidden');
     </script>
 </body>
-</html> 
+</html>
